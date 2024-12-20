@@ -1,10 +1,31 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Stack } from "expo-router";
+import { useFonts, Poppins_400Regular, Poppins_500Medium } from "@expo-google-fonts/poppins";
+import { ZenDots_400Regular} from "@expo-google-fonts/zen-dots";
+import * as SplashScreen from "expo-splash-screen";
 
 import "../global.css";
 
+SplashScreen.preventAutoHideAsync();
+
 const RootLayout = () => {
+  const [loaded, error] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    ZenDots_400Regular
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
   return (
     <Stack>
       <Stack.Screen name="index" />

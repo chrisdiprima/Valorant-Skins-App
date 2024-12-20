@@ -5,7 +5,8 @@ import "../global.css";
 export default function Index() {
   return (
     <View className="flex-1 items-center justify-center">
-      <Text className="text-xl">Home</Text>
+      <Text className="font-zDots">Home</Text>
+      <Text style={{ fontFamily: "Poppins_400Regular" }}>Inter Black</Text>
     </View>
   );
 }
