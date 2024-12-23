@@ -9,7 +9,12 @@ module.exports = {
       pRegular: ["Poppins_400Regular"],
       zDots: ["ZenDots_400Regular"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        highlightedBlue: "#073F37",
+        ligtText: "#708687",
+      },
+    },
   },
   plugins: [],
 };

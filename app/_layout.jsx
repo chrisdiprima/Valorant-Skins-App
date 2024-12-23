@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { Stack } from "expo-router";
-import { useFonts, Poppins_400Regular, Poppins_500Medium } from "@expo-google-fonts/poppins";
-import { ZenDots_400Regular} from "@expo-google-fonts/zen-dots";
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+} from "@expo-google-fonts/poppins";
+import { ZenDots_400Regular } from "@expo-google-fonts/zen-dots";
 import * as SplashScreen from "expo-splash-screen";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import "../global.css";
 
@@ -13,7 +18,7 @@ const RootLayout = () => {
   const [loaded, error] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
-    ZenDots_400Regular
+    ZenDots_400Regular,
   });
 
   useEffect(() => {
@@ -28,11 +33,9 @@ const RootLayout = () => {
 
   return (
     <Stack>
-      <Stack.Screen name="index" />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 };
 
 export default RootLayout;
-
-const styles = StyleSheet.create({});
