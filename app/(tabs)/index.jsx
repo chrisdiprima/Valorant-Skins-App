@@ -1,21 +1,16 @@
+import { StatusBar } from "expo-status-bar";
 import { Text, View, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { SearchInput } from "../../components";
+import { useState } from "react";
 
 export default function AgentsScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Agents screen</Text>
-    </View>
+    <>
+      <SafeAreaView className="flex-col bg-primary h-full items-center pt-5">
+        <SearchInput />
+      </SafeAreaView>
+      <StatusBar style="light" />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#25292e",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    color: "#fff",
-  },
-});

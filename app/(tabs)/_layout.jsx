@@ -1,17 +1,6 @@
 import { Tabs } from "expo-router";
-import Icon from "react-native-vector-icons/Feather";
 import { View, Text } from "react-native";
-
-const TabIcon = ({ icon, color, name, focused }) => {
-  return (
-    <View className="h-full flex items-center mt-5">
-      <Icon className="h-10" name={icon} size={28} color={color}></Icon>
-      <Text className="w-full" style={{ color: color }}>
-        {name}
-      </Text>
-    </View>
-  );
-};
+import { TabIcon } from "../../components";
 
 export default function TabLayout() {
   return (
@@ -22,8 +11,7 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: "#091717",
           borderTopWidth: 0,
-          borderTopColor: "#fff",
-          height: 84,
+          height: 75,
         },
       }}
     >

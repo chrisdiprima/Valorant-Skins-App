@@ -1,21 +1,12 @@
 import { Text, View, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 export default function SearchScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Search screen</Text>
-    </View>
+    <>
+      <SafeAreaView className="bg-primary h-full"></SafeAreaView>
+      <StatusBar style="light" />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#25292e",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    color: "#fff",
-  },
-});
