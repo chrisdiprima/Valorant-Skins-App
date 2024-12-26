@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Vandal",
+    "weaponClass": "Rifle"
+  },
+  {
+    "id": 2,
+    "name": "Phantom",
+    "weaponClass": "Rifle"
+  },
+  {
+    "id": 3,
+    "name": "Operator",
+    "weaponClass": "Sniper"
+  },
+  {
+    "id": 4,
+    "name": "Ares",
+    "weaponClass": "Machine Gun"
+  },
+  {
+    "id": 5,
+    "name": "Guardian",
+    "weaponClass": "Shotgun"
+  },
+  {
+    "id": 6,
+    "name": "Marshal",
+    "weaponClass": "Sniper"
+  },
+  {
+    "id": 7,
+    "name": "Spectre",
+    "weaponClass": "SMG"
+  },
+  {
+    "id": 8,
+    "name": "Stinger",
+    "weaponClass": "SMG"
+  },
+  {
+    "id": 9,
+    "name": "Sheriff",
+    "weaponClass": "Sidearm"
+  },
+  {
+    "id": 10,
+    "name": "Classic",
+    "weaponClass": "Sidearm"
+  },
+  {
+    "id": 11,
+    "name": "Bucky",
+    "weaponClass": "Shotgun"
+  }
+]

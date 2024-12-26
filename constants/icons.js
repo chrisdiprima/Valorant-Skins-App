@@ -4,6 +4,7 @@ import initiatorIcon from "../assets/icons/initiator.png";
 import sentinelIcon from "../assets/icons/sentinel.png";
 import agentTemplate from "../assets/images/agentTemplate.png";
 import gunTemplate from "../assets/images/gunTemplate.png";
+import gunIcon from "../assets/icons/gunIcon.png";
 
 export default {
   controllerIcon,
@@ -11,5 +12,6 @@ export default {
   initiatorIcon,
   sentinelIcon,
   agentTemplate,
-  gunTemplate
+  gunTemplate,
+  gunIcon,
 };

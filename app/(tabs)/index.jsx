@@ -118,6 +118,7 @@ export default function AgentsScreen() {
             if (item.item.agents.length != 0) {
               return (
                 <ItemDisplay
+                  type="agent"
                   className={item.item.name}
                   classIcon={item.item.icon}
                   items={item.item.agents}

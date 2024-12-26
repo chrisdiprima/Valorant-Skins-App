@@ -3,13 +3,22 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "../constants";
 
-const ItemDisplay = ({ className, classIcon, items }) => {
+const ItemDisplay = ({ type, className, classIcon, items }) => {
   const Item = ({ title }) => (
     <Pressable
-      className="bg-layer1 rounded-xl w-[48%] h-[22vh] flex justify-center items-center gap-2"
+      className={
+        type === "agent"
+          ? "bg-layer1 rounded-xl w-[48%] h-[22vh] flex justify-center items-center gap-2"
+          : "bg-layer1 rounded-xl w-[48%] h-[18vh] flex justify-center items-center gap-5 pt-8"
+      }
       onPress={() => console.log("clicked: " + title)}
     >
-      <Image className="w-2/3 h-2/3" source={icons.agentTemplate} />
+      <Image
+        className={
+          type == "agent" ? "w-2/3 h-2/3" : "w-[90%] h-[6vh] min-h-fit"
+        }
+        source={type == "agent" ? icons.agentTemplate : icons.gunTemplate}
+      />
       <Text className="text-white text-3xl text-center font-pRegular text-2xl">
         {title}
       </Text>
@@ -19,7 +28,7 @@ const ItemDisplay = ({ className, classIcon, items }) => {
   return (
     <View className="flex w-[90vw] gap-4 pb-4">
       <View className="flex-row gap-2 justify-start">
-        <Image source={classIcon} />
+        <Image className="w-7 h-7" source={classIcon} />
         <Text className="text-white font-pRegular text-3xl">{className}</Text>
       </View>
       <FlatList
