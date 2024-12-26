@@ -1,254 +1,252 @@
-{
-  "agents": [
-    {
-      "id": 1,
-      "name": "Brimstone",
-      "class": "Controller",
-      "abilities": {
-        "ability1": {
-          "name": "Stim Beacon",
-          "description": "Deploy a beacon that grants RapidFire to all players near it."
-        },
-        "ability2": {
-          "name": "Incendiary",
-          "description": "Launch an incendiary grenade that deploys a damaging field of fire."
-        },
-        "signature": {
-          "name": "Sky Smoke",
-          "description": "Use your map to call in smokescreens that obscure vision."
-        },
-        "ultimate": {
-          "name": "Orbital Strike",
-          "description": "Call in a devastating orbital strike that pulses for high damage over several seconds."
-        }
-      }
-    },
-    {
-      "id": 2,
-      "name": "Phoenix",
-      "class": "Duelist",
-      "abilities": {
-        "ability1": {
-          "name": "Blaze",
-          "description": "Cast a flame wall that blocks vision and damages anyone passing through it."
-        },
-        "ability2": {
-          "name": "Curveball",
-          "description": "Cast a flare orb that moves in a curve, bursting into a blinding flash."
-        },
-        "signature": {
-          "name": "Hot Hands",
-          "description": "Throw a fireball that explodes after a delay or upon impact, dealing damage to enemies and healing you."
-        },
-        "ultimate": {
-          "name": "Run It Back",
-          "description": "Mark your current location. If you die during the ability's duration, you'll be reborn at the marked location with full health."
-        }
-      }
-    },
-    {
-      "id": 3,
-      "name": "Sage",
-      "class": "Sentinel",
-      "abilities": {
-        "ability1": {
-          "name": "Barrier Orb",
-          "description": "Conjure a large, solid wall. Right-click to rotate the wall before casting."
-        },
-        "ability2": {
-          "name": "Slow Orb",
-          "description": "Cast out a radianite orb that breaks into a slowing field upon impact with the ground."
-        },
-        "signature": {
-          "name": "Healing Orb",
-          "description": "Heal an ally or yourself to full health over a few seconds."
-        },
-        "ultimate": {
-          "name": "Resurrection",
-          "description": "Target a friendly corpse. After a short delay, revive them with full health."
-        }
-      }
-    },
-    {
-      "id": 4,
-      "name": "Sova",
-      "class": "Initiator",
-      "abilities": {
-        "ability1": {
-          "name": "Shock Bolt",
-          "description": "Fire an explosive bolt that emits a damaging pulse of static energy upon impact."
-        },
-        "ability2": {
-          "name": "Owl Drone",
-          "description": "Deploy a pilotable drone that can fire a dart to reveal enemies."
-        },
-        "signature": {
-          "name": "Recon Bolt",
-          "description": "Fire a bolt that deploys a sonar emitter, revealing nearby enemies."
-        },
-        "ultimate": {
-          "name": "Hunter's Fury",
-          "description": "Fire up to three deadly energy blasts that spear across the entire map, dealing damage and revealing enemies."
-        }
-      }
-    },
-    {
-      "id": 5,
-      "name": "Viper",
-      "class": "Controller",
-      "abilities": {
-        "ability1": {
-          "name": "Snake Bite",
-          "description": "Fire a projectile that explodes into a pool of damaging acid."
-        },
-        "ability2": {
-          "name": "Poison Cloud",
-          "description": "Throw a gas emitter that you can reactivate to create a toxic cloud."
-        },
-        "signature": {
-          "name": "Toxic Screen",
-          "description": "Deploy a line of gas emitters that can be reactivated to create a wall of toxic gas."
-        },
-        "ultimate": {
-          "name": "Viper's Pit",
-          "description": "Create a large cloud that reduces vision range and maximum health of enemies inside it."
-        }
-      }
-    },
-    {
-      "id": 6,
-      "name": "Cypher",
-      "class": "Sentinel",
-      "abilities": {
-        "ability1": {
-          "name": "Trapwire",
-          "description": "Place a stealthy tripwire between two walls. Triggering enemies are restrained and revealed for a short time."
-        },
-        "ability2": {
-          "name": "Cyber Cage",
-          "description": "Throw a remote activation trap that, when triggered, creates a zone that blocks vision and slows enemies."
-        },
-        "signature": {
-          "name": "Spycam",
-          "description": "Place a remote camera that can fire a tracking dart at enemies."
-        },
-        "ultimate": {
-          "name": "Neural Theft",
-          "description": "Extract information from a dead enemy, revealing the location of all living enemies."
-        }
-      }
-    },
-    {
-      "id": 7,
-      "name": "Reyna",
-      "class": "Duelist",
-      "abilities": {
-        "ability1": {
-          "name": "Leer",
-          "description": "Summon an ethereal eye that Nearsights all enemies who look at it."
-        },
-        "ability2": {
-          "name": "Devour",
-          "description": "Consume a Soul Orb to rapidly heal for a short duration."
-        },
-        "signature": {
-          "name": "Dismiss",
-          "description": "Consume a Soul Orb to become intangible for a short duration."
-        },
-        "ultimate": {
-          "name": "Empress",
-          "description": "Enter a heightened state of frenzy, increasing firing speed, reload speed, and healing upon kills."
-        }
-      }
-    },
-    {
-      "id": 8,
-      "name": "Killjoy",
-      "class": "Sentinel",
-      "abilities": {
-        "ability1": {
-          "name": "Nanoswarm",
-          "description": "Throw a grenade that, upon activation, deploys a swarm of nanobots dealing damage."
-        },
-        "ability2": {
-          "name": "Alarmbot",
-          "description": "Deploy a bot that hunts down enemies, applying a debuff that causes them to take increased damage."
-        },
-        "signature": {
-          "name": "Turret",
-          "description": "Deploy a turret that fires at enemies in a 180-degree cone."
-        },
-        "ultimate": {
-          "name": "Lockdown",
-          "description": "Deploy a device that detains all enemies caught in its radius after a long windup."
-        }
-      }
-    },
-    {
-      "id": 9,
-      "name": "Breach",
-      "class": "Initiator",
-      "abilities": {
-        "ability1": {
-          "name": "Flashpoint",
-          "description": "Fire a fast-acting flashbang through a wall. The burst blinds all players looking at it."
-        },
-        "ability2": {
-          "name": "Fault Line",
-          "description": "Equip a seismic blast. Hold fire to increase the distance. Release to set off a quake that dazes all players in its zone."
-        },
-        "signature": {
-          "name": "Aftershock",
-          "description": "Fire a slow-acting burst through a wall to deal high damage."
-        },
-        "ultimate": {
-          "name": "Rolling Thunder",
-          "description": "Send a cascading quake through all terrain in a large cone. The quake dazes and knocks up everyone it touches."
-        }
-      }
-    },
-    {
-      "id": 10,
-      "name": "Omen",
-      "class": "Controller",
-      "abilities": {
-        "ability1": {
-          "name": "Shrouded Step",
-          "description": "After a delay, teleport a short distance."
-        },
-        "ability2": {
-          "name": "Paranoia",
-          "description": "Send out an ethereal shadow in a straight line, Nearsighting anyone it touches."
-        },
-        "signature": {
-          "name": "Dark Cover",
-          "description": "Cast out a stealthed ethereal orb that bursts into an obscuring sphere."
-        },
-        "ultimate": {
-          "name": "From the Shadows",
-          "description": "Select anywhere on the map to teleport and reform. You will appear as a Shade that can be killed by enemies to cancel the teleport."
-        }
-      }
-    },
-    {
-      "id": 11,
-      "name": "Jett",
-      "class": "Duelist",
-      "abilities": {
-        "ability1": {
-          "name": "Cloudburst",
-          "description": "Throw out a cloud of fog that obscures vision on impact."
-        },
-        "ability2": {
-          "name": "Updraft",
-          "description": "Propel yourself upwards."
-        },
-        "signature": {
-          "name": "Tailwind",
-          "description": "Dash a short distance in the direction you're moving."
-        },
-        "ultimate": { "name": "Blade Storm" }
+[
+  {
+    "id": 1,
+    "name": "Brimstone",
+    "class": "Controller",
+    "abilities": {
+      "ability1": {
+        "name": "Stim Beacon",
+        "description": "Deploy a beacon that grants RapidFire to all players near it."
+      },
+      "ability2": {
+        "name": "Incendiary",
+        "description": "Launch an incendiary grenade that deploys a damaging field of fire."
+      },
+      "signature": {
+        "name": "Sky Smoke",
+        "description": "Use your map to call in smokescreens that obscure vision."
+      },
+      "ultimate": {
+        "name": "Orbital Strike",
+        "description": "Call in a devastating orbital strike that pulses for high damage over several seconds."
       }
     }
-  ]
-}
+  },
+  {
+    "id": 2,
+    "name": "Phoenix",
+    "class": "Duelist",
+    "abilities": {
+      "ability1": {
+        "name": "Blaze",
+        "description": "Cast a flame wall that blocks vision and damages anyone passing through it."
+      },
+      "ability2": {
+        "name": "Curveball",
+        "description": "Cast a flare orb that moves in a curve, bursting into a blinding flash."
+      },
+      "signature": {
+        "name": "Hot Hands",
+        "description": "Throw a fireball that explodes after a delay or upon impact, dealing damage to enemies and healing you."
+      },
+      "ultimate": {
+        "name": "Run It Back",
+        "description": "Mark your current location. If you die during the ability's duration, you'll be reborn at the marked location with full health."
+      }
+    }
+  },
+  {
+    "id": 3,
+    "name": "Sage",
+    "class": "Sentinel",
+    "abilities": {
+      "ability1": {
+        "name": "Barrier Orb",
+        "description": "Conjure a large, solid wall. Right-click to rotate the wall before casting."
+      },
+      "ability2": {
+        "name": "Slow Orb",
+        "description": "Cast out a radianite orb that breaks into a slowing field upon impact with the ground."
+      },
+      "signature": {
+        "name": "Healing Orb",
+        "description": "Heal an ally or yourself to full health over a few seconds."
+      },
+      "ultimate": {
+        "name": "Resurrection",
+        "description": "Target a friendly corpse. After a short delay, revive them with full health."
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "Sova",
+    "class": "Initiator",
+    "abilities": {
+      "ability1": {
+        "name": "Shock Bolt",
+        "description": "Fire an explosive bolt that emits a damaging pulse of static energy upon impact."
+      },
+      "ability2": {
+        "name": "Owl Drone",
+        "description": "Deploy a pilotable drone that can fire a dart to reveal enemies."
+      },
+      "signature": {
+        "name": "Recon Bolt",
+        "description": "Fire a bolt that deploys a sonar emitter, revealing nearby enemies."
+      },
+      "ultimate": {
+        "name": "Hunter's Fury",
+        "description": "Fire up to three deadly energy blasts that spear across the entire map, dealing damage and revealing enemies."
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "Viper",
+    "class": "Controller",
+    "abilities": {
+      "ability1": {
+        "name": "Snake Bite",
+        "description": "Fire a projectile that explodes into a pool of damaging acid."
+      },
+      "ability2": {
+        "name": "Poison Cloud",
+        "description": "Throw a gas emitter that you can reactivate to create a toxic cloud."
+      },
+      "signature": {
+        "name": "Toxic Screen",
+        "description": "Deploy a line of gas emitters that can be reactivated to create a wall of toxic gas."
+      },
+      "ultimate": {
+        "name": "Viper's Pit",
+        "description": "Create a large cloud that reduces vision range and maximum health of enemies inside it."
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "Cypher",
+    "class": "Sentinel",
+    "abilities": {
+      "ability1": {
+        "name": "Trapwire",
+        "description": "Place a stealthy tripwire between two walls. Triggering enemies are restrained and revealed for a short time."
+      },
+      "ability2": {
+        "name": "Cyber Cage",
+        "description": "Throw a remote activation trap that, when triggered, creates a zone that blocks vision and slows enemies."
+      },
+      "signature": {
+        "name": "Spycam",
+        "description": "Place a remote camera that can fire a tracking dart at enemies."
+      },
+      "ultimate": {
+        "name": "Neural Theft",
+        "description": "Extract information from a dead enemy, revealing the location of all living enemies."
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "Reyna",
+    "class": "Duelist",
+    "abilities": {
+      "ability1": {
+        "name": "Leer",
+        "description": "Summon an ethereal eye that Nearsights all enemies who look at it."
+      },
+      "ability2": {
+        "name": "Devour",
+        "description": "Consume a Soul Orb to rapidly heal for a short duration."
+      },
+      "signature": {
+        "name": "Dismiss",
+        "description": "Consume a Soul Orb to become intangible for a short duration."
+      },
+      "ultimate": {
+        "name": "Empress",
+        "description": "Enter a heightened state of frenzy, increasing firing speed, reload speed, and healing upon kills."
+      }
+    }
+  },
+  {
+    "id": 8,
+    "name": "Killjoy",
+    "class": "Sentinel",
+    "abilities": {
+      "ability1": {
+        "name": "Nanoswarm",
+        "description": "Throw a grenade that, upon activation, deploys a swarm of nanobots dealing damage."
+      },
+      "ability2": {
+        "name": "Alarmbot",
+        "description": "Deploy a bot that hunts down enemies, applying a debuff that causes them to take increased damage."
+      },
+      "signature": {
+        "name": "Turret",
+        "description": "Deploy a turret that fires at enemies in a 180-degree cone."
+      },
+      "ultimate": {
+        "name": "Lockdown",
+        "description": "Deploy a device that detains all enemies caught in its radius after a long windup."
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "Breach",
+    "class": "Initiator",
+    "abilities": {
+      "ability1": {
+        "name": "Flashpoint",
+        "description": "Fire a fast-acting flashbang through a wall. The burst blinds all players looking at it."
+      },
+      "ability2": {
+        "name": "Fault Line",
+        "description": "Equip a seismic blast. Hold fire to increase the distance. Release to set off a quake that dazes all players in its zone."
+      },
+      "signature": {
+        "name": "Aftershock",
+        "description": "Fire a slow-acting burst through a wall to deal high damage."
+      },
+      "ultimate": {
+        "name": "Rolling Thunder",
+        "description": "Send a cascading quake through all terrain in a large cone. The quake dazes and knocks up everyone it touches."
+      }
+    }
+  },
+  {
+    "id": 10,
+    "name": "Omen",
+    "class": "Controller",
+    "abilities": {
+      "ability1": {
+        "name": "Shrouded Step",
+        "description": "After a delay, teleport a short distance."
+      },
+      "ability2": {
+        "name": "Paranoia",
+        "description": "Send out an ethereal shadow in a straight line, Nearsighting anyone it touches."
+      },
+      "signature": {
+        "name": "Dark Cover",
+        "description": "Cast out a stealthed ethereal orb that bursts into an obscuring sphere."
+      },
+      "ultimate": {
+        "name": "From the Shadows",
+        "description": "Select anywhere on the map to teleport and reform. You will appear as a Shade that can be killed by enemies to cancel the teleport."
+      }
+    }
+  },
+  {
+    "id": 11,
+    "name": "Jett",
+    "class": "Duelist",
+    "abilities": {
+      "ability1": {
+        "name": "Cloudburst",
+        "description": "Throw out a cloud of fog that obscures vision on impact."
+      },
+      "ability2": {
+        "name": "Updraft",
+        "description": "Propel yourself upwards."
+      },
+      "signature": {
+        "name": "Tailwind",
+        "description": "Dash a short distance in the direction you're moving."
+      },
+      "ultimate": { "name": "Blade Storm" }
+    }
+  }
+]

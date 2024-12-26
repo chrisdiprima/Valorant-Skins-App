@@ -1,11 +1,13 @@
 import { Tabs } from "expo-router";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, Keyboard } from "react-native";
 import { TabIcon } from "../../components";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        tabBarHideOnKeyboard: true,
+        backBehavior: "firstRoute",
         tabBarActiveTintColor: "#019C81",
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -13,9 +15,13 @@ export default function TabLayout() {
           borderTopWidth: 0,
           height: 75,
         },
+        tabBarButton: (props) => (
+          <TouchableOpacity {...props} activeOpacity={1} />
+        ),
       }}
     >
       <Tabs.Screen
+        activeOpacity={1}
         name="index"
         options={{
           title: "Agents",

@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from "react-native";
+import React from "react";
 
-const Item = () => {
+const Item = ({ type, name }) => {
   return (
     <View>
-      
+      <Image />
+      <Text>{name}</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;

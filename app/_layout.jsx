@@ -33,7 +33,11 @@ const RootLayout = () => {
 
   return (
     <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        className="bg-primary h-full"
+        name="(tabs)"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 };

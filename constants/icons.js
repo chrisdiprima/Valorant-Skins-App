@@ -1,20 +1,15 @@
-import crosshair from "../assets/icons/crosshair.png";
-import filter from "../assets/icons/filter.png";
-import home from "../assets/icons/home.png";
-import search from "../assets/icons/search.png";
-import settings from "../assets/icons/settings.png";
-import sliders from "../assets/icons/sliders.png";
-import user from "../assets/icons/user.png";
-import x from "../assets/icons/x.png";
+import controllerIcon from "../assets/icons/controller.png";
+import duelistIcon from "../assets/icons/duelist.png";
+import initiatorIcon from "../assets/icons/initiator.png";
+import sentinelIcon from "../assets/icons/sentinel.png";
+import agentTemplate from "../assets/images/agentTemplate.png";
+import gunTemplate from "../assets/images/gunTemplate.png";
 
 export default {
-  search,
-  crosshair,
-  filter,
-  home,
-  search,
-  settings,
-  sliders,
-  user,
-  x,
+  controllerIcon,
+  duelistIcon,
+  initiatorIcon,
+  sentinelIcon,
+  agentTemplate,
+  gunTemplate
 };
