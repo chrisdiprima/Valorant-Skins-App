@@ -3,12 +3,12 @@ import { Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchInput } from "../../components";
 import { useEffect, useState } from "react";
+import { FlatList } from "react-native";
 
 import { icons } from "../../constants";
 import ItemDisplay from "../../components/ItemDisplay";
 
 import agentData from "../../agentsTester.json";
-import { FlatList } from "react-native";
 
 export default function AgentsScreen() {
   const [search, setSearch] = useState("");
@@ -64,7 +64,6 @@ export default function AgentsScreen() {
           )
         );
       }
-
       if (agentGroup.name === "Duelists") {
         setDuelists(
           agentData.filter(
@@ -74,7 +73,6 @@ export default function AgentsScreen() {
           )
         );
       }
-
       if (agentGroup.name === "Initiators") {
         setInitiators(
           agentData.filter(
@@ -84,7 +82,6 @@ export default function AgentsScreen() {
           )
         );
       }
-
       if (agentGroup.name === "Sentinels") {
         setSentinels(
           agentData.filter(

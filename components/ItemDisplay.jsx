@@ -1,17 +1,39 @@
-import { View, Text, FlatList, Image, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "../constants";
+import { useRouter } from "expo-router";
 
 const ItemDisplay = ({ type, className, classIcon, items }) => {
-  const Item = ({ title }) => (
+  const router = useRouter();
+
+  const Item = ({ item }) => (
     <Pressable
       className={
         type === "agent"
           ? "bg-layer1 rounded-xl w-[48%] h-[22vh] flex justify-center items-center gap-2"
           : "bg-layer1 rounded-xl w-[48%] h-[18vh] flex justify-center items-center gap-5 pt-8"
       }
-      onPress={() => console.log("clicked: " + title)}
+      onPress={() => {
+        if (type === "agent")
+          router.push({
+            pathname: "/AgentPage",
+            params: { id: item.id },
+          });
+        else {
+          router.push({
+            pathname: "/GunPage",
+            params: { id: item.id },
+          });
+        }
+      }}
     >
       <Image
         className={
@@ -20,7 +42,7 @@ const ItemDisplay = ({ type, className, classIcon, items }) => {
         source={type == "agent" ? icons.agentTemplate : icons.gunTemplate}
       />
       <Text className="text-white text-3xl text-center font-pRegular text-2xl">
-        {title}
+        {item.name}
       </Text>
     </Pressable>
   );
@@ -37,7 +59,7 @@ const ItemDisplay = ({ type, className, classIcon, items }) => {
         numColumns={2}
         data={items}
         keyExtractor={(item) => item.id}
-        renderItem={(item) => <Item title={item.item.name} />}
+        renderItem={(item) => <Item item={item.item} />}
       />
     </View>
   );
