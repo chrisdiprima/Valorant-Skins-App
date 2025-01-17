@@ -14,28 +14,42 @@ export default function AgentsScreen() {
   const [search, setSearch] = useState("");
 
   const [sidearms, setSidearms] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "Sidearm")
+    weaponData.filter(
+      (weapon) => weapon.category === "EEquippableCategory::Sidearm"
+    )
   );
   const [smgs, setSmgs] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "SMG")
+    weaponData.filter(
+      (weapon) => weapon.category === "EEquippableCategory::SMG"
+    )
   );
   const [shotguns, setShotguns] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "Shotgun")
+    weaponData.filter(
+      (weapon) => weapon.category === "EEquippableCategory::Shotgun"
+    )
   );
   const [rifles, setRifles] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "Rifle")
+    weaponData.filter(
+      (weapon) => weapon.category === "EEquippableCategory::Rifle"
+    )
   );
 
   const [snipers, setSnipers] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "Sniper")
+    weaponData.filter(
+      (weapon) => weapon.category === "EEquippableCategory::Sniper"
+    )
   );
 
   const [machineGuns, setMachineGuns] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "Machine Gun")
+    weaponData.filter(
+      (weapon) => weapon.category === "EEquippableCategory::Heavy"
+    )
   );
 
   const [melee, setMelee] = useState(
-    weaponData.filter((weapon) => weapon.weaponClass === "Melee")
+    weaponData.filter(
+      (weapon) => weapon.weaponClass === "EEquippableCategory::Melee"
+    )
   );
 
   const organizedWeaponData = [
@@ -89,8 +103,8 @@ export default function AgentsScreen() {
         setSidearms(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "Sidearm"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::Sidearm"
           )
         );
       }
@@ -99,8 +113,8 @@ export default function AgentsScreen() {
         setSmgs(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "SMG"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::SMG"
           )
         );
       }
@@ -109,8 +123,8 @@ export default function AgentsScreen() {
         setShotguns(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "Shotgun"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::Shotgun"
           )
         );
       }
@@ -119,8 +133,8 @@ export default function AgentsScreen() {
         setRifles(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "Rifle"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::Rifle"
           )
         );
       }
@@ -129,8 +143,8 @@ export default function AgentsScreen() {
         setSnipers(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "Sniper"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::Sniper"
           )
         );
       }
@@ -139,8 +153,8 @@ export default function AgentsScreen() {
         setMachineGuns(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "Machine Gun"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::Heavy"
           )
         );
       }
@@ -149,8 +163,8 @@ export default function AgentsScreen() {
         setMelee(
           weaponData.filter(
             (weapon) =>
-              weapon.name.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.weaponClass == "Melee"
+              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              weapon.category == "EEquippableCategory::Melee"
           )
         );
       }

@@ -11,38 +11,49 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "../constants";
 import { useRouter } from "expo-router";
 
-const ItemDisplay = ({ type, className, classIcon, items }) => {
+const ItemDisplay = ({ type, className, classIcon, items, smallIcon }) => {
   const router = useRouter();
-
   const Item = ({ item }) => (
     <Pressable
       className={
         type === "agent"
-          ? "bg-layer1 rounded-xl w-[48%] h-[22vh] flex justify-center items-center gap-2"
-          : "bg-layer1 rounded-xl w-[48%] h-[18vh] flex justify-center items-center gap-5 pt-8"
+          ? "bg-layer1 rounded-xl w-[48%] h-[22vh] flex justify-center items-center gap-3 pt-2"
+          : "bg-layer1 rounded-xl w-[48%] h-fit flex justify-center items-center gap-5 py-6"
       }
       onPress={() => {
         if (type === "agent")
           router.push({
             pathname: "/AgentPage",
-            params: { id: item.id },
+            params: { id: item.uuid },
           });
-        else {
+        else if (type === "weapon") {
           router.push({
-            pathname: "/GunPage",
-            params: { id: item.id },
+            pathname: "/GunsPage",
+            params: { id: item.uuid, smallIcon: item.killStreamIcon },
+          });
+        } else {
+          router.push({
+            pathname: "/IndividualSkin",
+            params: { id: item.uuid, smallIcon: smallIcon },
           });
         }
       }}
     >
       <Image
-        className={
-          type == "agent" ? "w-2/3 h-2/3" : "w-[90%] h-[6vh] min-h-fit"
-        }
-        source={type == "agent" ? icons.agentTemplate : icons.gunTemplate}
+        resizeMode="contain"
+        className={type == "agent" ? "w-2/3 h-2/3" : "w-[40vw] h-[8vh]"}
+        source={{
+          uri: item.displayIcon,
+        }}
       />
-      <Text className="text-white text-3xl text-center font-pRegular text-2xl">
-        {item.name}
+      <Text
+        className={
+          type === "skin"
+            ? (className = "text-white text-center font-pRegular text-xl")
+            : (className = "text-white text-center font-pRegular text-2xl")
+        }
+      >
+        {item.displayName}
       </Text>
     </Pressable>
   );
@@ -58,7 +69,7 @@ const ItemDisplay = ({ type, className, classIcon, items }) => {
         columnWrapperStyle={{ gap: 12 }}
         numColumns={2}
         data={items}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.uuid}
         renderItem={(item) => <Item item={item.item} />}
       />
     </View>

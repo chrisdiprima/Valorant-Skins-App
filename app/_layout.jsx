@@ -50,7 +50,12 @@ const RootLayout = () => {
       />
       <Stack.Screen
         className="bg-primary h-full"
-        name="GunPage"
+        name="GunsPage"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        className="bg-primary h-full"
+        name="IndividualSkin"
         options={{ headerShown: false }}
       />
     </Stack>

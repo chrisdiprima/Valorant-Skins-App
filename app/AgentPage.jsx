@@ -20,17 +20,12 @@ import Icon from "react-native-vector-icons/Feather";
 export default function AgentPage() {
   const params = useLocalSearchParams();
   const id = params.id;
-  let agent = {};
-  agentData.forEach((a) => {
-    if (a.id == id) {
-      agent = a;
-    }
-  });
+  let agent = agentData.find((agent) => agent.uuid === id);
 
   const abilities = agent.abilities;
 
   let icon;
-  switch (agent.class) {
+  switch (agent.role.displayName) {
     case "Controller": {
       icon = icons.controllerIcon;
       break;
@@ -50,11 +45,13 @@ export default function AgentPage() {
       break;
   }
 
-  const [currentAbility, SetCurrentAbility] = useState(abilities.ability1);
+  const [currentAbility, SetCurrentAbility] = useState(abilities[0]);
 
   const AbilityView = ({ ability }) => (
     <View className="flex gap-2 pt-5">
-      <Text className="text-2xl text-white font-zDots">{ability.name}</Text>
+      <Text className="text-2xl text-white font-zDots">
+        {ability.displayName}
+      </Text>
       <Text className="text-lg text-white font-pRegular">
         {ability.description}
       </Text>
@@ -68,24 +65,24 @@ export default function AgentPage() {
       <SafeAreaView className="flex-col bg-primary h-full items-center pt-5 gap-6 flex-1">
         <ScrollView
           keyboardShouldPersistTaps="always"
-          className=""
           contentContainerStyle={{
             alignItems: "center",
+            gap: 4,
           }}
           showsVerticalScrollIndicator={false}
         >
-          <View className="flex-row w-[90vw] gap-2 justify-between items-center">
+          <View className="flex-row w-[90vw] justify-between">
             <View>
               <View className="flex-row gap-2 items-center">
                 <Text className="text-white text-3xl font-zDots">
-                  {agent.name}
+                  {agent.displayName}
                 </Text>
                 <CountryFlag isoCode="se" size={22} />
               </View>
               <View className="flex-row gap-2 items-center">
                 <Image className="w-5 h-5" source={icon} />
-                <Text className="text-white text-xl font-pRegular">
-                  {agent.class}
+                <Text className="text-white text-2xl font-pRegular">
+                  {agent.role.displayName}
                 </Text>
               </View>
             </View>
@@ -98,21 +95,21 @@ export default function AgentPage() {
                 })
               }
             >
-              <Icon name="home" size={40} color="white" />
+              <Icon name="x" size={40} color="white" />
             </Pressable>
           </View>
           <View className="w-full h-[70vh]">
             <Image
               className="w-full h-[60vh] absolute z-20"
-              source={icons.fullAgentTemplate}
+              source={{ uri: agent.fullPortrait }}
             />
             <Image
               className="w-full h-[90vh] absolute z-10 top-[-10vh]"
-              source={icons.agentBackgroundTemplate}
+              source={{ uri: agent.background }}
               tintColor="#062628"
             />
           </View>
-          <View className="flex-col w-[90vw] gap-2">
+          <View className="flex-col w-[90vw]">
             <Text className="text-white text-3xl font-pMedium ">Abilities</Text>
 
             <View className="flex-row gap-2">
@@ -120,7 +117,7 @@ export default function AgentPage() {
                 return (
                   <Pressable
                     className={
-                      currentAbility.name === ability[1].name
+                      currentAbility.displayName === ability[1].displayName
                         ? "bg-highlighted w-20 h-20 p-2 rounded-xl z-30"
                         : "bg-layer1 w-20 h-20 p-2 rounded-xl z-30"
                     }
@@ -131,7 +128,7 @@ export default function AgentPage() {
                   >
                     <Image
                       className="w-full h-full"
-                      source={icons.abilityTemplate}
+                      source={{ uri: ability[1].displayIcon }}
                     />
                   </Pressable>
                 );

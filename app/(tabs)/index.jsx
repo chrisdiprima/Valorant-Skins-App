@@ -8,25 +8,24 @@ import { FlatList } from "react-native";
 import { icons } from "../../constants";
 import ItemDisplay from "../../components/ItemDisplay";
 
-import agentData from "../../agentsTester.json";
+import agents from "../../agentsTester.json";
 
 export default function AgentsScreen() {
   const [search, setSearch] = useState("");
-
   const [controllers, setControllers] = useState(
-    agentData.filter((agent) => agent.class === "Controller")
+    agents.filter((agent) => agent.role.displayName === "Controller")
   );
   const [duelists, setDuelists] = useState(
-    agentData.filter((agent) => agent.class === "Duelist")
-  );
-  const [initiators, setInitiators] = useState(
-    agentData.filter((agent) => agent.class === "Initiator")
+    agents.filter((agent) => agent.role.displayName === "Duelist")
   );
   const [sentinels, setSentinels] = useState(
-    agentData.filter((agent) => agent.class === "Sentinel")
+    agents.filter((agent) => agent.role.displayName === "Sentinel")
+  );
+  const [initiators, setInitiators] = useState(
+    agents.filter((agent) => agent.role.displayName === "Initiator")
   );
 
-  const organizedAgentData = [
+  const organizedagents = [
     {
       id: 1,
       name: "Controllers",
@@ -54,40 +53,40 @@ export default function AgentsScreen() {
   ];
 
   useEffect(() => {
-    organizedAgentData.forEach((agentGroup) => {
+    organizedagents.forEach((agentGroup) => {
       if (agentGroup.name === "Controllers") {
         setControllers(
-          agentData.filter(
+          agents.filter(
             (agent) =>
-              agent.name.toUpperCase().includes(search.toUpperCase()) &&
-              agent.class == "Controller"
+              agent.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              agent.role.displayName == "Controller"
           )
         );
       }
       if (agentGroup.name === "Duelists") {
         setDuelists(
-          agentData.filter(
+          agents.filter(
             (agent) =>
-              agent.name.toUpperCase().includes(search.toUpperCase()) &&
-              agent.class == "Duelist"
+              agent.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              agent.role.displayName == "Duelist"
           )
         );
       }
       if (agentGroup.name === "Initiators") {
         setInitiators(
-          agentData.filter(
+          agents.filter(
             (agent) =>
-              agent.name.toUpperCase().includes(search.toUpperCase()) &&
-              agent.class == "Initiator"
+              agent.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              agent.role.displayName == "Initiator"
           )
         );
       }
       if (agentGroup.name === "Sentinels") {
         setSentinels(
-          agentData.filter(
+          agents.filter(
             (agent) =>
-              agent.name.toUpperCase().includes(search.toUpperCase()) &&
-              agent.class == "Sentinel"
+              agent.displayName.toUpperCase().includes(search.toUpperCase()) &&
+              agent.role.displayName == "Sentinel"
           )
         );
       }
@@ -102,27 +101,24 @@ export default function AgentsScreen() {
           searchText={search}
           changeSearchText={setSearch}
         />
-
         <FlatList
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             display: "flex",
             paddingBottom: 20,
           }}
-          data={organizedAgentData}
+          data={organizedagents}
           keyExtractor={(item) => item.id}
-          renderItem={(item) => {
-            if (item.item.agents.length != 0) {
-              return (
-                <ItemDisplay
-                  type="agent"
-                  className={item.item.name}
-                  classIcon={item.item.icon}
-                  items={item.item.agents}
-                />
-              );
-            }
-          }}
+          renderItem={(item) =>
+            item.item.agents.length > 0 && (
+              <ItemDisplay
+                type="agent"
+                className={item.item.name}
+                classIcon={item.item.icon}
+                items={item.item.agents}
+              />
+            )
+          }
         />
       </SafeAreaView>
       <StatusBar style="light" />
