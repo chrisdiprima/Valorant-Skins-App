@@ -49,8 +49,10 @@ const ItemDisplay = ({ type, className, classIcon, items, smallIcon }) => {
       <Text
         className={
           type === "skin"
-            ? (className = "text-white text-center font-pRegular text-xl")
-            : (className = "text-white text-center font-pRegular text-2xl")
+            ? (className =
+                "text-white text-center font-pRegular text-xl w-[95%]")
+            : (className =
+                "text-white text-center font-pRegular text-2xl w-[95%]")
         }
       >
         {item.displayName}

@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         highlighted: "#073F37",
+        highlighted2: "#019C81",
         lightText: "#708687",
         primary: "#031314",
         layer1: "#062628",
