@@ -11,7 +11,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "../constants";
 import { useRouter } from "expo-router";
 
-const ItemDisplay = ({ type, className, classIcon, items, smallIcon }) => {
+const ItemDisplay = ({
+  type,
+  itemName,
+  classIcon,
+  items,
+  smallIcon,
+  weapon,
+}) => {
   const router = useRouter();
   const Item = ({ item }) => (
     <Pressable
@@ -34,7 +41,9 @@ const ItemDisplay = ({ type, className, classIcon, items, smallIcon }) => {
         } else {
           router.push({
             pathname: "/IndividualSkin",
-            params: { id: item.uuid, smallIcon: smallIcon },
+            params: {
+              id: item.uuid,
+            },
           });
         }
       }}
@@ -49,10 +58,8 @@ const ItemDisplay = ({ type, className, classIcon, items, smallIcon }) => {
       <Text
         className={
           type === "skin"
-            ? (className =
-                "text-white text-center font-pRegular text-xl w-[95%]")
-            : (className =
-                "text-white text-center font-pRegular text-2xl w-[95%]")
+            ? "text-white text-center font-pRegular text-xl w-[95%]"
+            : "text-white text-center font-pRegular text-2xl w-[95%]"
         }
       >
         {item.displayName}
@@ -64,7 +71,7 @@ const ItemDisplay = ({ type, className, classIcon, items, smallIcon }) => {
     <View className="flex w-[90vw] gap-4 pb-4">
       <View className="flex-row gap-2 justify-start">
         <Image className="w-7 h-7" source={classIcon} />
-        <Text className="text-white font-pRegular text-3xl">{className}</Text>
+        <Text className="text-white font-pRegular text-3xl">{itemName}</Text>
       </View>
       <FlatList
         className="flex gap-3"

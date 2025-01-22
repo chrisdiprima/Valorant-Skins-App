@@ -6,12 +6,14 @@ import {
   Dimensions,
   FlatList,
   Pressable,
+  StyleSheet,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import React, { useRef, useState } from "react";
 import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 import Carousel from "react-native-reanimated-carousel";
+import weaponData from "../weaponTester.json";
 
 import skinData from "../skinTester.json";
 import contentTiers from "../contentTiers.json";
@@ -21,11 +23,13 @@ import { icons } from "../constants";
 import Animated from "react-native-reanimated";
 
 const IndividualSkin = () => {
+  const router = useRouter();
   const params = useLocalSearchParams();
   const id = params.id;
-  const smallIcon = params.smallIcon;
+
   let skin = skinData.find((skin) => skin.uuid === id);
   const chromas = skin.chromas;
+  const levels = skin.levels;
   const defaultSkin = chromas.find(
     (chroma) => chroma.displayName === skin.displayName
   );
@@ -33,13 +37,20 @@ const IndividualSkin = () => {
   const [curIndex, setCurIndex] = useState(0);
   const carouselRef = useRef();
 
+  let weapon = {};
+  weaponData.forEach((w) => {
+    w.skins.forEach((s) =>
+      s.displayName == skin.displayName ? (weapon = w) : ""
+    );
+  });
+
   return (
     <SafeAreaView className="flex-col item-center bg-primary h-full pt-5">
       <ScrollView
         keyboardShouldPersistTaps="always"
         contentContainerStyle={{
           alignItems: "center",
-          gap: 40,
+          gap: 20,
         }}
         showsVerticalScrollIndicator={false}
       >
@@ -59,7 +70,7 @@ const IndividualSkin = () => {
             <Image
               resizeMode="contain"
               className="w-24 h-10"
-              source={{ uri: smallIcon }}
+              source={{ uri: weapon.killStreamIcon }}
             />
 
             <View className="flex-row items-center gap-2">
@@ -109,7 +120,7 @@ const IndividualSkin = () => {
             <View className="flex-row gap-2">
               {chromas.map((chroma, index) => (
                 <View
-                  key={index}
+                  key={chroma.uuid}
                   className={
                     curIndex === index
                       ? "bg-highlighted2 h-5 w-3 rounded-full"
@@ -128,6 +139,80 @@ const IndividualSkin = () => {
             </Pressable>
           </View>
         </View>
+
+        {chromas.length > 1 && (
+          <View className="flex-row gap-2 w-[95%] gap-4">
+            {chromas.map((chroma, index) => (
+              <Pressable
+                key={chroma.uuid}
+                onPress={() =>
+                  carouselRef.current?.scrollTo({
+                    count: index - curIndex,
+                  })
+                }
+              >
+                <Image
+                  className={
+                    curIndex === index
+                      ? "border-solid border-4 border-highlighted2 w-14 h-14 rounded-lg"
+                      : "w-14 h-14 rounded-lg"
+                  }
+                  source={{ uri: chroma.swatch }}
+                />
+              </Pressable>
+            ))}
+          </View>
+        )}
+
+        <View className="flex-row gap-[3%]">
+          <Pressable
+            className="flex w-[45%] h-fit bg-layer1 rounded-lg py-6 gap-2"
+            onPress={() =>
+              router.push({
+                pathname: "/GunsPage",
+                params: { id: weapon.uuid, smallIcon: weapon.killStreamIcon },
+              })
+            }
+          >
+            <Image
+              resizeMode="contain"
+              className="w-full h-[8vh]"
+              source={{ uri: weapon.killStreamIcon }}
+            />
+            <Text className="text-center text-white text-2xl font-pMedium">
+              All {weapon.displayName}'s
+            </Text>
+          </Pressable>
+          <Pressable
+            className="flex w-[45%] h-fit bg-layer1 rounded-lg py-6 gap-2"
+            onPress={() =>
+              router.push({
+                pathname: "/CollectionPage",
+                params: {
+                  id: weapon.uuid,
+                  smallIcon: weapon.killStreamIcon,
+                  collection: skin.displayName.substring(
+                    0,
+                    skin.displayName.lastIndexOf(" ")
+                  ),
+                },
+              })
+            }
+          >
+            <Image
+              resizeMode="contain"
+              className="w-full h-[8vh]"
+              source={{ uri: weapon.killStreamIcon }}
+            />
+            <Text className="text-center text-white text-2xl font-pMedium">
+              {skin.displayName.replace(weapon.displayName, "")} Collection
+            </Text>
+          </Pressable>
+        </View>
+        <View className="w-[90%]">
+          <Text className="text-3xl font-pMedium text-white">Upgrades</Text>
+        </View>
+        <View className="w-96 h-96 bg-white"></View>
       </ScrollView>
     </SafeAreaView>
   );

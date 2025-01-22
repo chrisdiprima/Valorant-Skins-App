@@ -193,7 +193,7 @@ export default function AgentsScreen() {
               return (
                 <ItemDisplay
                   type="weapon"
-                  className={item.item.name}
+                  itemName={item.item.name}
                   classIcon={item.item.icon}
                   items={item.item.weapons}
                 />

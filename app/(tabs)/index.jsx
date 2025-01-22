@@ -113,7 +113,7 @@ export default function AgentsScreen() {
             item.item.agents.length > 0 && (
               <ItemDisplay
                 type="agent"
-                className={item.item.name}
+                itemName={item.item.name}
                 classIcon={item.item.icon}
                 items={item.item.agents}
               />

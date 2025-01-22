@@ -58,6 +58,11 @@ const RootLayout = () => {
         name="IndividualSkin"
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        className="bg-primary h-full"
+        name="CollectionPage"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 };

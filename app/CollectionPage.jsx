@@ -11,16 +11,26 @@ import ItemDisplay from "../components/ItemDisplay";
 import weaponData from "../weaponTester.json";
 import { FlatList } from "react-native";
 
-export default function GunsPage() {
+export default function CollectionPage() {
   const params = useLocalSearchParams();
   const id = params.id;
+  const collectionName = params.collection;
   let smallIcon = params.smallIcon;
   let weapon = weaponData.find((weapon) => weapon.uuid === id);
   const allSkins = weapon.skins;
 
   const [search, setSearch] = useState("");
 
-  const [skins, setSkins] = useState(allSkins);
+  let collectionSkins = [];
+  weaponData.forEach((weapon) =>
+    weapon.skins.forEach((skin) =>
+      skin.displayName.includes(collectionName)
+        ? collectionSkins.push(skin)
+        : ""
+    )
+  );
+
+  const [skins, setSkins] = useState(collectionSkins);
 
   const organizedWeaponData = [
     {
@@ -33,7 +43,7 @@ export default function GunsPage() {
 
   useEffect(() => {
     setSkins(
-      allSkins.filter(
+      collectionSkins.filter(
         (skin) =>
           skin.displayName.toUpperCase().includes(search.toUpperCase()) &&
           !skin.displayName.toUpperCase().includes("STANDARD") &&
@@ -64,7 +74,7 @@ export default function GunsPage() {
               return (
                 <ItemDisplay
                   type="skin"
-                  itemName={item.item.name}
+                  itemName={collectionName}
                   weapon={weapon}
                   classIcon={item.item.icon}
                   items={item.item.skins}
