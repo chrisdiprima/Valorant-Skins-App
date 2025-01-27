@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchInput } from "../components";
 import { useEffect, useState } from "react";
 import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 
+import Icon from "react-native-vector-icons/Feather";
 import { icons } from "../constants";
 import ItemDisplay from "../components/ItemDisplay";
 
@@ -52,14 +53,22 @@ export default function CollectionPage() {
     );
   }, [search]);
 
+  const router = useRouter();
+
   return (
     <>
       <SafeAreaView className="flex-col bg-primary h-full items-center pt-5 gap-6 flex-1">
-        <SearchInput
-          placeText="Search for a weapon"
-          searchText={search}
-          changeSearchText={setSearch}
-        />
+        <View className="flex-row gap-1 w-[90vw] items-center">
+          <Pressable onPress={() => router.back()}>
+            <Icon name="arrow-left" size={40} color={"white"} />
+          </Pressable>
+          <SearchInput
+            placeText="Search for a weapon"
+            className="w-10"
+            searchText={search}
+            changeSearchText={setSearch}
+          />
+        </View>
 
         <FlatList
           showsVerticalScrollIndicator={false}

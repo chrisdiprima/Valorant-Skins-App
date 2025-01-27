@@ -24,6 +24,8 @@ export default function AgentPage() {
 
   const abilities = agent.abilities;
 
+  const [showDescription, setShowDescription] = useState(false);
+
   let icon;
   switch (agent.role.displayName) {
     case "Controller": {
@@ -63,6 +65,9 @@ export default function AgentPage() {
   return (
     <>
       <SafeAreaView className="flex-col bg-primary h-full items-center pt-5 gap-6 flex-1">
+        <Pressable className="w-[90vw]" onPress={() => router.back()}>
+          <Icon name="arrow-left" size={40} color={"white"} />
+        </Pressable>
         <ScrollView
           keyboardShouldPersistTaps="always"
           contentContainerStyle={{
@@ -72,32 +77,40 @@ export default function AgentPage() {
           showsVerticalScrollIndicator={false}
         >
           <View className="flex-row w-[90vw] justify-between">
-            <View>
-              <View className="flex-row gap-2 items-center">
-                <Text className="text-white text-3xl font-zDots">
-                  {agent.displayName}
-                </Text>
-                <CountryFlag isoCode="se" size={22} />
+            <View className="flex-row items-center justify-between w-full">
+              <View>
+                <View className="flex-row gap-2 items-center">
+                  <Text className="text-white text-3xl font-zDots">
+                    {agent.displayName}
+                  </Text>
+                  <CountryFlag isoCode="se" size={22} />
+                </View>
+                <View className="flex-row gap-2 items-center">
+                  <Image className="w-5 h-5" source={icon} />
+                  <Text className="text-white text-2xl font-pRegular">
+                    {agent.role.displayName}
+                  </Text>
+                </View>
               </View>
-              <View className="flex-row gap-2 items-center">
-                <Image className="w-5 h-5" source={icon} />
-                <Text className="text-white text-2xl font-pRegular">
-                  {agent.role.displayName}
-                </Text>
-              </View>
+              <Pressable
+                className="z-30"
+                onPress={() => {
+                  showDescription
+                    ? setShowDescription(false)
+                    : setShowDescription(true);
+                }}
+              >
+                <Icon name="message-circle" size={40} color={"white"} />
+              </Pressable>
             </View>
-
-            <Pressable
-              className="z-30"
-              onPress={() =>
-                router.push({
-                  pathname: "/(tabs)",
-                })
-              }
-            >
-              <Icon name="x" size={40} color="white" />
-            </Pressable>
           </View>
+          {showDescription && (
+            <View className="w-[90vw] py-5">
+              <Text className="text-white font-pRegular text-lg">
+                {agent.description}
+              </Text>
+            </View>
+          )}
           <View className="w-full h-[70vh]">
             <Image
               className="w-full h-[60vh] absolute z-20"

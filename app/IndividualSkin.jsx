@@ -69,9 +69,14 @@ const IndividualSkin = () => {
   const { isPlaying } = useEvent(player, "playingChange", {
     isPlaying: player.playing,
   });
-
   return (
-    <SafeAreaView className="flex-col item-center bg-primary h-full pt-5">
+    <SafeAreaView className="flex-col bg-primary h-full pt-5 gap-6">
+      <Pressable
+        className="flex w-[90vw] self-center"
+        onPress={() => router.back()}
+      >
+        <Icon name="arrow-left" size={40} color={"white"} />
+      </Pressable>
       <ScrollView
         keyboardShouldPersistTaps="always"
         contentContainerStyle={{
@@ -308,6 +313,64 @@ const IndividualSkin = () => {
             </View>
           </View>
         )}
+        <View className="flex gap-5 w-[90vw] pb-10">
+          <Text className="text-white text-3xl font-zDots">
+            Weapon Info
+          </Text>
+          <Text className="text-white text-xl font-pRegular">
+            Category: {weapon.category.replace("EEquippableCategory::", "")}
+          </Text>
+          <Text className="text-white text-xl font-pRegular">
+            Fire Rate: {weapon.weaponStats.fireRate} Rounds/Second
+          </Text>
+          <Text className="text-white text-xl font-pRegular">
+            Magazine Size: {weapon.weaponStats.magazineSize} Rounds
+          </Text>
+          <Text className="text-white text-xl font-pRegular">
+            Equip Time: {weapon.weaponStats.equipTimeSeconds} Seconds
+          </Text>
+          <Text className="text-white text-xl font-pRegular">
+            Reload Time: {weapon.weaponStats.reloadTimeSeconds} Seconds
+          </Text>
+          <View className="flex-col">
+            <Text className="text-white text-xl font-pRegular">
+              Damage From {weapon.weaponStats.damageRanges[0].rangeStartMeters}{" "}
+              to {weapon.weaponStats.damageRanges[0].rangeEndMeters} meters
+            </Text>
+            <View className="pl-5">
+              <Text className="text-white text-xl font-pRegular">
+                Head: {weapon.weaponStats.damageRanges[0].headDamage} Damage
+              </Text>
+              <Text className="text-white text-xl font-pRegular">
+                Body: {weapon.weaponStats.damageRanges[0].bodyDamage} Damage
+              </Text>
+              <Text className="text-white text-xl font-pRegular">
+                Leg: {weapon.weaponStats.damageRanges[0].legDamage} Damage
+              </Text>
+            </View>
+          </View>
+
+          {weapon.weaponStats.damageRanges.length > 1 && (
+            <View className="flex-col">
+              <Text className="text-white text-xl font-pRegular">
+                Damage From{" "}
+                {weapon.weaponStats.damageRanges[1].rangeStartMeters} to{" "}
+                {weapon.weaponStats.damageRanges[1].rangeEndMeters} meters
+              </Text>
+              <View className="pl-5">
+                <Text className="text-white text-xl font-pRegular">
+                  Head: {weapon.weaponStats.damageRanges[1].headDamage} Damage
+                </Text>
+                <Text className="text-white text-xl font-pRegular">
+                  Body: {weapon.weaponStats.damageRanges[1].bodyDamage} Damage
+                </Text>
+                <Text className="text-white text-xl font-pRegular">
+                  Leg: {weapon.weaponStats.damageRanges[1].legDamage} Damage
+                </Text>
+              </View>
+            </View>
+          )}
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

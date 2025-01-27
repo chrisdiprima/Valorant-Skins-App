@@ -4,11 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchInput } from "../../components";
 import { useEffect, useState } from "react";
 
+import Icon from "react-native-vector-icons/Feather";
 import { icons } from "../../constants";
 import ItemDisplay from "../../components/ItemDisplay";
 
 import weaponData from "../../weaponTester.json";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 
 export default function AgentsScreen() {
   const [search, setSearch] = useState("");
@@ -174,6 +175,7 @@ export default function AgentsScreen() {
   return (
     <>
       <SafeAreaView className="flex-col bg-primary h-full items-center pt-5 gap-6 flex-1">
+        
         <SearchInput
           placeText="Search for a weapon"
           searchText={search}
