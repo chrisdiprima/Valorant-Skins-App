@@ -9,10 +9,14 @@ import {
   StyleSheet,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useEvent } from "expo";
+import { useVideoPlayer, VideoView } from "expo-video";
+import { RadioButton } from "react-native-paper";
 
 import React, { useRef, useState } from "react";
 import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 import Carousel from "react-native-reanimated-carousel";
+
 import weaponData from "../weaponTester.json";
 
 import skinData from "../skinTester.json";
@@ -22,7 +26,19 @@ import Icon from "react-native-vector-icons/Feather";
 import { icons } from "../constants";
 import Animated from "react-native-reanimated";
 
+import { useFocusEffect } from "@react-navigation/native";
+
 const IndividualSkin = () => {
+  const [selected, setSelected] = React.useState("");
+
+  const levelText = {
+    0: "Default",
+    1: "VFX",
+    2: "Animation",
+    3: "Finisher",
+    4: "Kill Counter",
+  };
+
   const router = useRouter();
   const params = useLocalSearchParams();
   const id = params.id;
@@ -35,6 +51,7 @@ const IndividualSkin = () => {
   );
   const dimensions = Dimensions.get("window");
   const [curIndex, setCurIndex] = useState(0);
+  const [curLevel, setCurLevel] = useState(levels[0]);
   const carouselRef = useRef();
 
   let weapon = {};
@@ -42,6 +59,15 @@ const IndividualSkin = () => {
     w.skins.forEach((s) =>
       s.displayName == skin.displayName ? (weapon = w) : ""
     );
+  });
+
+  const [curVideo, setCurVideo] = useState(curLevel.streamedVideo);
+  const player = useVideoPlayer(curVideo, (player) => {
+    player.loop = true;
+  });
+
+  const { isPlaying } = useEvent(player, "playingChange", {
+    isPlaying: player.playing,
   });
 
   return (
@@ -167,12 +193,13 @@ const IndividualSkin = () => {
         <View className="flex-row gap-[3%]">
           <Pressable
             className="flex w-[45%] h-fit bg-layer1 rounded-lg py-6 gap-2"
-            onPress={() =>
+            onPress={() => {
+              player.pause();
               router.push({
                 pathname: "/GunsPage",
                 params: { id: weapon.uuid, smallIcon: weapon.killStreamIcon },
-              })
-            }
+              });
+            }}
           >
             <Image
               resizeMode="contain"
@@ -185,7 +212,8 @@ const IndividualSkin = () => {
           </Pressable>
           <Pressable
             className="flex w-[45%] h-fit bg-layer1 rounded-lg py-6 gap-2"
-            onPress={() =>
+            onPress={() => {
+              player.pause();
               router.push({
                 pathname: "/CollectionPage",
                 params: {
@@ -196,8 +224,8 @@ const IndividualSkin = () => {
                     skin.displayName.lastIndexOf(" ")
                   ),
                 },
-              })
-            }
+              });
+            }}
           >
             <Image
               resizeMode="contain"
@@ -209,10 +237,77 @@ const IndividualSkin = () => {
             </Text>
           </Pressable>
         </View>
-        <View className="w-[90%]">
-          <Text className="text-3xl font-pMedium text-white">Upgrades</Text>
-        </View>
-        <View className="w-96 h-96 bg-white"></View>
+
+        {levels.length > 1 && (
+          <View className="flex w-[90%] gap-5">
+            <Text className="text-3xl font-pMedium text-white">Upgrades</Text>
+
+            <View className="flex-col w-full gap-3 items-start">
+              <View className="flex gap-2">
+                {levels.map((level) => (
+                  <Pressable
+                    key={level.uuid}
+                    onPress={() => {
+                      setCurLevel(level);
+                      setCurVideo(curLevel.streamedVideo);
+                    }}
+                    className={
+                      curLevel == level
+                        ? "flex-row border-solid border-2 border-highlighted2 rounded-lg p-3 items-center gap-4"
+                        : "p-3"
+                    }
+                  >
+                    <Text className="text-white font-pMedium text-lg">
+                      {level.displayName}
+                    </Text>
+                    {curLevel == level && (
+                      <View className="flex-row items-center gap-2">
+                        <Image
+                          className="w-10 h-10"
+                          source={icons.radianitePoints}
+                        />
+                        <Text className="text-white text-2xl font-zDots">
+                          10
+                        </Text>
+                      </View>
+                    )}
+                  </Pressable>
+                ))}
+              </View>
+              <Text className="font-zDots text-xl text-white pt-2">
+                Upgrade Level: {levelText[levels.indexOf(curLevel)]}
+              </Text>
+            </View>
+
+            <View
+              className="flex-1 items-center justify-center"
+              onPressIn={() => console.log("pressed")}
+            >
+              <VideoView
+                nativeControls={false}
+                width={300}
+                height={200}
+                player={player}
+                allowsFullscreen
+                allowsPictureInPicture
+              />
+              {!player.playing && (
+                <Icon
+                  className="absolute"
+                  name="play"
+                  size={40}
+                  color={"white"}
+                />
+              )}
+              <Pressable
+                className="w-full h-full absolute"
+                onPress={() =>
+                  player.playing ? player.pause() : player.play()
+                }
+              ></Pressable>
+            </View>
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

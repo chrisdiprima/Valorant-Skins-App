@@ -8,7 +8,8 @@ import gunIcon from "../assets/icons/gunIcon.png";
 import fullAgentTemplate from "../assets/images/fullAgentTemplate.png";
 import agentBackgroundTemplate from "../assets/images/agentBackgroundTemplate.png";
 import abilityTemplate from "../assets/images/abilityTemplate.png";
-import valPoints from "../assets/icons/valPoints.png"
+import valPoints from "../assets/icons/valPoints.png";
+import radianitePoints from "../assets/icons/radianitePoints.png";
 
 export default {
   controllerIcon,
@@ -21,5 +22,6 @@ export default {
   fullAgentTemplate,
   agentBackgroundTemplate,
   abilityTemplate,
-  valPoints
+  valPoints,
+  radianitePoints,
 };

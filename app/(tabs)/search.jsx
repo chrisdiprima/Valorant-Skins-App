@@ -8,6 +8,7 @@ export default function SearchScreen() {
     <>
       <SafeAreaView className="flex-col bg-primary h-full items-center pt-5">
         <SearchInput placeText="Search the database" />
+        
       </SafeAreaView>
       <StatusBar style="light" />
     </>
