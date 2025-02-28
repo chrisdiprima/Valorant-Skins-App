@@ -4,207 +4,240 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchInput } from "../../components";
 import { useEffect, useState } from "react";
 
-import Icon from "react-native-vector-icons/Feather";
 import { icons } from "../../constants";
 import ItemDisplay from "../../components/ItemDisplay";
 
-import weaponData from "../../weaponTester.json";
 import { FlatList, Pressable } from "react-native";
 
 export default function AgentsScreen() {
-  const [search, setSearch] = useState("");
+	const [search, setSearch] = useState("");
+	const [weaponData, setWeaponData] = useState();
 
-  const [sidearms, setSidearms] = useState(
-    weaponData.filter(
-      (weapon) => weapon.category === "EEquippableCategory::Sidearm"
-    )
-  );
-  const [smgs, setSmgs] = useState(
-    weaponData.filter(
-      (weapon) => weapon.category === "EEquippableCategory::SMG"
-    )
-  );
-  const [shotguns, setShotguns] = useState(
-    weaponData.filter(
-      (weapon) => weapon.category === "EEquippableCategory::Shotgun"
-    )
-  );
-  const [rifles, setRifles] = useState(
-    weaponData.filter(
-      (weapon) => weapon.category === "EEquippableCategory::Rifle"
-    )
-  );
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					"https://valorant-api.com/v1/weapons"
+				);
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				const data = await response.json();
+				setWeaponData(data.data);
+				setLoading(false);
+			} catch (error) {
+				setError(error);
+				setLoading(false);
+			}
+		};
 
-  const [snipers, setSnipers] = useState(
-    weaponData.filter(
-      (weapon) => weapon.category === "EEquippableCategory::Sniper"
-    )
-  );
+		fetchData();
+	}, []);
 
-  const [machineGuns, setMachineGuns] = useState(
-    weaponData.filter(
-      (weapon) => weapon.category === "EEquippableCategory::Heavy"
-    )
-  );
+	const [sidearms, setSidearms] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.category === "EEquippableCategory::Sidearm"
+		)
+	);
+	const [smgs, setSmgs] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.category === "EEquippableCategory::SMG"
+		)
+	);
+	const [shotguns, setShotguns] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.category === "EEquippableCategory::Shotgun"
+		)
+	);
+	const [rifles, setRifles] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.category === "EEquippableCategory::Rifle"
+		)
+	);
 
-  const [melee, setMelee] = useState(
-    weaponData.filter(
-      (weapon) => weapon.weaponClass === "EEquippableCategory::Melee"
-    )
-  );
+	const [snipers, setSnipers] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.category === "EEquippableCategory::Sniper"
+		)
+	);
 
-  const organizedWeaponData = [
-    {
-      id: 1,
-      name: "Sidearms",
-      icon: icons.gunIcon,
-      weapons: sidearms,
-    },
-    {
-      id: 2,
-      name: "SMGs",
-      icon: icons.gunIcon,
-      weapons: smgs,
-    },
-    {
-      id: 3,
-      name: "Shotguns",
-      icon: icons.gunIcon,
-      weapons: shotguns,
-    },
-    {
-      id: 4,
-      name: "Rifles",
-      icon: icons.gunIcon,
-      weapons: rifles,
-    },
-    {
-      id: 5,
-      name: "Snipers",
-      icon: icons.gunIcon,
-      weapons: snipers,
-    },
-    {
-      id: 6,
-      name: "Machine Guns",
-      icon: icons.gunIcon,
-      weapons: machineGuns,
-    },
-    {
-      id: 7,
-      name: "Melee",
-      icon: icons.gunIcon,
-      weapons: melee,
-    },
-  ];
+	const [machineGuns, setMachineGuns] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.category === "EEquippableCategory::Heavy"
+		)
+	);
 
-  useEffect(() => {
-    organizedWeaponData.forEach((weaponGroup) => {
-      if (weaponGroup.name === "Sidearms") {
-        setSidearms(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::Sidearm"
-          )
-        );
-      }
+	const [melee, setMelee] = useState(
+		weaponData?.filter(
+			(weapon) => weapon.weaponClass === "EEquippableCategory::Melee"
+		)
+	);
 
-      if (weaponGroup.name === "SMGs") {
-        setSmgs(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::SMG"
-          )
-        );
-      }
+	const organizedWeaponData = [
+		{
+			id: 1,
+			name: "Sidearms",
+			icon: icons.gunIcon,
+			weapons: sidearms,
+		},
+		{
+			id: 2,
+			name: "SMGs",
+			icon: icons.gunIcon,
+			weapons: smgs,
+		},
+		{
+			id: 3,
+			name: "Shotguns",
+			icon: icons.gunIcon,
+			weapons: shotguns,
+		},
+		{
+			id: 4,
+			name: "Rifles",
+			icon: icons.gunIcon,
+			weapons: rifles,
+		},
+		{
+			id: 5,
+			name: "Snipers",
+			icon: icons.gunIcon,
+			weapons: snipers,
+		},
+		{
+			id: 6,
+			name: "Machine Guns",
+			icon: icons.gunIcon,
+			weapons: machineGuns,
+		},
+		{
+			id: 7,
+			name: "Melee",
+			icon: icons.gunIcon,
+			weapons: melee,
+		},
+	];
 
-      if (weaponGroup.name === "Shotguns") {
-        setShotguns(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::Shotgun"
-          )
-        );
-      }
+	useEffect(() => {
+		organizedWeaponData.forEach((weaponGroup) => {
+			if (weaponGroup.name === "Sidearms") {
+				setSidearms(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::Sidearm"
+					)
+				);
+			}
 
-      if (weaponGroup.name === "Rifles") {
-        setRifles(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::Rifle"
-          )
-        );
-      }
+			if (weaponGroup.name === "SMGs") {
+				setSmgs(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::SMG"
+					)
+				);
+			}
 
-      if (weaponGroup.name === "Snipers") {
-        setSnipers(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::Sniper"
-          )
-        );
-      }
+			if (weaponGroup.name === "Shotguns") {
+				setShotguns(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::Shotgun"
+					)
+				);
+			}
 
-      if (weaponGroup.name === "Machine Guns") {
-        setMachineGuns(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::Heavy"
-          )
-        );
-      }
+			if (weaponGroup.name === "Rifles") {
+				setRifles(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::Rifle"
+					)
+				);
+			}
 
-      if (weaponGroup.name === "Melee") {
-        setMelee(
-          weaponData.filter(
-            (weapon) =>
-              weapon.displayName.toUpperCase().includes(search.toUpperCase()) &&
-              weapon.category == "EEquippableCategory::Melee"
-          )
-        );
-      }
-    });
-  }, [search]);
+			if (weaponGroup.name === "Snipers") {
+				setSnipers(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::Sniper"
+					)
+				);
+			}
 
-  return (
-    <>
-      <SafeAreaView className="flex-col bg-primary h-full items-center pt-5 gap-6 flex-1">
-        
-        <SearchInput
-          placeText="Search for a weapon"
-          searchText={search}
-          changeSearchText={setSearch}
-        />
+			if (weaponGroup.name === "Machine Guns") {
+				setMachineGuns(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::Heavy"
+					)
+				);
+			}
 
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            display: "flex",
-            paddingBottom: 20,
-          }}
-          data={organizedWeaponData}
-          keyExtractor={(item) => item.id}
-          renderItem={(item) => {
-            if (item.item.weapons.length != 0) {
-              return (
-                <ItemDisplay
-                  type="weapon"
-                  itemName={item.item.name}
-                  classIcon={item.item.icon}
-                  items={item.item.weapons}
-                />
-              );
-            }
-          }}
-        />
-      </SafeAreaView>
-      <StatusBar style="light" />
-    </>
-  );
+			if (weaponGroup.name === "Melee") {
+				setMelee(
+					weaponData?.filter(
+						(weapon) =>
+							weapon.displayName
+								.toUpperCase()
+								.includes(search.toUpperCase()) &&
+							weapon.category == "EEquippableCategory::Melee"
+					)
+				);
+			}
+		});
+	}, [search, weaponData]);
+
+	return (
+		<>
+			<SafeAreaView className="flex-col bg-primary h-full items-center pt-5 gap-6 flex-1">
+				<SearchInput
+					placeText="Search for a weapon"
+					searchText={search}
+					changeSearchText={setSearch}
+				/>
+
+				<FlatList
+					showsVerticalScrollIndicator={false}
+					contentContainerStyle={{
+						display: "flex",
+						paddingBottom: 20,
+					}}
+					data={organizedWeaponData}
+					keyExtractor={(item) => item.id}
+					renderItem={(item) => {
+						if (item.item.weapons?.length != 0) {
+							return (
+								<ItemDisplay
+									type="weapon"
+									itemName={item.item.name}
+									classIcon={item.item.icon}
+									items={item.item.weapons}
+								/>
+							);
+						}
+					}}
+				/>
+			</SafeAreaView>
+			<StatusBar style="light" />
+		</>
+	);
 }

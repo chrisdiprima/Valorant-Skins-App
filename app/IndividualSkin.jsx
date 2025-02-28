@@ -69,6 +69,14 @@ const IndividualSkin = () => {
   const { isPlaying } = useEvent(player, "playingChange", {
     isPlaying: player.playing,
   });
+
+  const costList = {
+    "0cebb8be-46d7-c12a-d306-e9907bfc5a25": 1275,
+    "e046854e-406c-37f4-6607-19a9ba8426fc": 2175,
+    "60bca009-4182-7998-dee7-b8a2558dc369": 1775,
+    "12683d76-48d7-84a3-4e09-6985794f0445": 875,
+    "411e4a55-4e59-7757-41f0-86a53f101bb5": 2475,
+  };
   return (
     <SafeAreaView className="flex-col bg-primary h-full pt-5 gap-6">
       <Pressable
@@ -106,7 +114,9 @@ const IndividualSkin = () => {
 
             <View className="flex-row items-center gap-2">
               <Image className="w-10 h-10" source={icons.valPoints} />
-              <Text className="text-white text-lg font-zDots">1000</Text>
+              <Text className="text-white text-lg font-zDots">
+                {costList[skin.contentTierUuid]}
+              </Text>
             </View>
           </View>
         </View>
@@ -313,64 +323,65 @@ const IndividualSkin = () => {
             </View>
           </View>
         )}
-        <View className="flex gap-5 w-[90vw] pb-10">
-          <Text className="text-white text-3xl font-zDots">
-            Weapon Info
-          </Text>
-          <Text className="text-white text-xl font-pRegular">
-            Category: {weapon.category.replace("EEquippableCategory::", "")}
-          </Text>
-          <Text className="text-white text-xl font-pRegular">
-            Fire Rate: {weapon.weaponStats.fireRate} Rounds/Second
-          </Text>
-          <Text className="text-white text-xl font-pRegular">
-            Magazine Size: {weapon.weaponStats.magazineSize} Rounds
-          </Text>
-          <Text className="text-white text-xl font-pRegular">
-            Equip Time: {weapon.weaponStats.equipTimeSeconds} Seconds
-          </Text>
-          <Text className="text-white text-xl font-pRegular">
-            Reload Time: {weapon.weaponStats.reloadTimeSeconds} Seconds
-          </Text>
-          <View className="flex-col">
+        {weapon.weaponStats != null && (
+          <View className="flex gap-5 w-[90vw] pb-10">
+            <Text className="text-white text-3xl font-zDots">Weapon Info</Text>
             <Text className="text-white text-xl font-pRegular">
-              Damage From {weapon.weaponStats.damageRanges[0].rangeStartMeters}{" "}
-              to {weapon.weaponStats.damageRanges[0].rangeEndMeters} meters
+              Category: {weapon.category.replace("EEquippableCategory::", "")}
             </Text>
-            <View className="pl-5">
-              <Text className="text-white text-xl font-pRegular">
-                Head: {weapon.weaponStats.damageRanges[0].headDamage} Damage
-              </Text>
-              <Text className="text-white text-xl font-pRegular">
-                Body: {weapon.weaponStats.damageRanges[0].bodyDamage} Damage
-              </Text>
-              <Text className="text-white text-xl font-pRegular">
-                Leg: {weapon.weaponStats.damageRanges[0].legDamage} Damage
-              </Text>
-            </View>
-          </View>
-
-          {weapon.weaponStats.damageRanges.length > 1 && (
+            <Text className="text-white text-xl font-pRegular">
+              Fire Rate: {weapon.weaponStats.fireRate} Rounds/Second
+            </Text>
+            <Text className="text-white text-xl font-pRegular">
+              Magazine Size: {weapon.weaponStats.magazineSize} Rounds
+            </Text>
+            <Text className="text-white text-xl font-pRegular">
+              Equip Time: {weapon.weaponStats.equipTimeSeconds} Seconds
+            </Text>
+            <Text className="text-white text-xl font-pRegular">
+              Reload Time: {weapon.weaponStats.reloadTimeSeconds} Seconds
+            </Text>
             <View className="flex-col">
               <Text className="text-white text-xl font-pRegular">
                 Damage From{" "}
-                {weapon.weaponStats.damageRanges[1].rangeStartMeters} to{" "}
-                {weapon.weaponStats.damageRanges[1].rangeEndMeters} meters
+                {weapon.weaponStats.damageRanges[0].rangeStartMeters} to{" "}
+                {weapon.weaponStats.damageRanges[0].rangeEndMeters} meters
               </Text>
               <View className="pl-5">
                 <Text className="text-white text-xl font-pRegular">
-                  Head: {weapon.weaponStats.damageRanges[1].headDamage} Damage
+                  Head: {weapon.weaponStats.damageRanges[0].headDamage} Damage
                 </Text>
                 <Text className="text-white text-xl font-pRegular">
-                  Body: {weapon.weaponStats.damageRanges[1].bodyDamage} Damage
+                  Body: {weapon.weaponStats.damageRanges[0].bodyDamage} Damage
                 </Text>
                 <Text className="text-white text-xl font-pRegular">
-                  Leg: {weapon.weaponStats.damageRanges[1].legDamage} Damage
+                  Leg: {weapon.weaponStats.damageRanges[0].legDamage} Damage
                 </Text>
               </View>
             </View>
-          )}
-        </View>
+
+            {weapon.weaponStats.damageRanges.length > 1 && (
+              <View className="flex-col">
+                <Text className="text-white text-xl font-pRegular">
+                  Damage From{" "}
+                  {weapon.weaponStats.damageRanges[1].rangeStartMeters} to{" "}
+                  {weapon.weaponStats.damageRanges[1].rangeEndMeters} meters
+                </Text>
+                <View className="pl-5">
+                  <Text className="text-white text-xl font-pRegular">
+                    Head: {weapon.weaponStats.damageRanges[1].headDamage} Damage
+                  </Text>
+                  <Text className="text-white text-xl font-pRegular">
+                    Body: {weapon.weaponStats.damageRanges[1].bodyDamage} Damage
+                  </Text>
+                  <Text className="text-white text-xl font-pRegular">
+                    Leg: {weapon.weaponStats.damageRanges[1].legDamage} Damage
+                  </Text>
+                </View>
+              </View>
+            )}
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Astra",
+    "country_iso": "GH"
+  },
+  {
+    "name": "Breach",
+    "country_iso": "SE"
+  },
+  {
+    "name": "Brimstone",
+    "country_iso": "US"
+  },
+  {
+    "name": "Chamber",
+    "country_iso": "FR"
+  },
+  {
+    "name": "Cypher",
+    "country_iso": "MA"
+  },
+  {
+    "name": "Fade",
+    "country_iso": "TR"
+  },
+  {
+    "name": "Clove",
+    "country_iso": "GB-SCT"
+  },
+  {
+    "name": "Tejo",
+    "country_iso": "CO"
+  },
+  {
+    "name": "Vyse",
+    "country_iso": "KR"
+  },
+  {
+    "name": "Iso",
+    "country_iso": "CN"
+  },
+  {
+    "name": "Harbor",
+    "country_iso": "IN"
+  },
+  {
+    "name": "Jett",
+    "country_iso": "KR"
+  },
+  {
+    "name": "KAY/O",
+    "country_iso": "N/A"
+  },
+  {
+    "name": "Killjoy",
+    "country_iso": "DE"
+  },
+  {
+    "name": "Neon",
+    "country_iso": "PH"
+  },
+  {
+    "name": "Omen",
+    "country_iso": "N/A"
+  },
+  {
+    "name": "Phoenix",
+    "country_iso": "GB"
+  },
+  {
+    "name": "Raze",
+    "country_iso": "BR"
+  },
+  {
+    "name": "Reyna",
+    "country_iso": "MX"
+  },
+  {
+    "name": "Sage",
+    "country_iso": "CN"
+  },
+  {
+    "name": "Skye",
+    "country_iso": "AU"
+  },
+  {
+    "name": "Sova",
+    "country_iso": "RU"
+  },
+  {
+    "name": "Viper",
+    "country_iso": "US"
+  },
+  {
+    "name": "Yoru",
+    "country_iso": "JP"
+  },
+  {
+    "name": "Deadlock",
+    "country_iso": "NO"
+  },
+  {
+    "name": "Gekko",
+    "country_iso": "US"
+  }
+]

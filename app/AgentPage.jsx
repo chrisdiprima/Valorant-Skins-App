@@ -13,6 +13,8 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 import agentData from "../agentsTester.json";
+import agentCountries from "../agentCountries.json";
+
 import { icons } from "../constants";
 import CountryFlag from "react-native-country-flag";
 import Icon from "react-native-vector-icons/Feather";
@@ -21,10 +23,13 @@ export default function AgentPage() {
   const params = useLocalSearchParams();
   const id = params.id;
   let agent = agentData.find((agent) => agent.uuid === id);
+  let agentCountry = agentCountries.find(
+    (item) => item.name === agent.displayName
+  );
 
-  const abilities = agent.abilities;
-
-  const [showDescription, setShowDescription] = useState(false);
+  const abilities = agent.abilities.filter(
+    (ability) => ability.slot != "Passive"
+  );
 
   let icon;
   switch (agent.role.displayName) {
@@ -83,7 +88,9 @@ export default function AgentPage() {
                   <Text className="text-white text-3xl font-zDots">
                     {agent.displayName}
                   </Text>
-                  <CountryFlag isoCode="se" size={22} />
+                  {agentCountry.country_iso && (
+                    <CountryFlag isoCode={agentCountry.country_iso} size={22} />
+                  )}
                 </View>
                 <View className="flex-row gap-2 items-center">
                   <Image className="w-5 h-5" source={icon} />
@@ -92,25 +99,10 @@ export default function AgentPage() {
                   </Text>
                 </View>
               </View>
-              <Pressable
-                className="z-30"
-                onPress={() => {
-                  showDescription
-                    ? setShowDescription(false)
-                    : setShowDescription(true);
-                }}
-              >
-                <Icon name="message-circle" size={40} color={"white"} />
-              </Pressable>
+              
             </View>
           </View>
-          {showDescription && (
-            <View className="w-[90vw] py-5">
-              <Text className="text-white font-pRegular text-lg">
-                {agent.description}
-              </Text>
-            </View>
-          )}
+          
           <View className="w-full h-[70vh]">
             <Image
               className="w-full h-[60vh] absolute z-20"

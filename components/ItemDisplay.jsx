@@ -38,6 +38,11 @@ const ItemDisplay = ({
             pathname: "/GunsPage",
             params: { id: item.uuid, smallIcon: item.killStreamIcon },
           });
+        } else if (type === "map") {
+          router.push({
+            pathname: "/MapDisplay",
+            params: { id: item.uuid },
+          });
         } else {
           router.push({
             pathname: "/IndividualSkin",
@@ -50,10 +55,20 @@ const ItemDisplay = ({
     >
       <Image
         resizeMode="contain"
-        className={type == "agent" ? "w-2/3 h-2/3" : "w-[40vw] h-[8vh]"}
-        source={{
-          uri: item.displayIcon,
-        }}
+        className={
+          type == "agent"
+            ? "w-2/3 h-2/3"
+            : type === "map"
+            ? "w-[40vw] h-[10vh]"
+            : "w-[40vw] h-[8vh]"
+        }
+        source={
+          type === "map"
+            ? {
+                uri: item.splash,
+              }
+            : { uri: item.displayIcon }
+        }
       />
       <Text
         className={

@@ -63,6 +63,11 @@ const RootLayout = () => {
         name="CollectionPage"
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        className="bg-primary h-full"
+        name="MapDisplay"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 };
