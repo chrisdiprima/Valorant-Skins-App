@@ -6,11 +6,8 @@ This is a mobile application built with React Native and Expo, designed to provi
 
 ![App Screenshot 1](screenshots/agentsScreenshot.png)
 ![App Screenshot 2](screenshots/agentPage1.png)
-![App Screenshot 3](screenshots/weaponPage.png)
 ![App Screenshot 4](screenshots/maps.png)
 ![App Screenshot 5](screenshots/IndividualMap.png)
-
-*Add your app screenshots here!*
 
 ## Description
 
