@@ -1,20 +1,13 @@
 import {
   Text,
   View,
-  StyleSheet,
   Image,
   ScrollView,
   Pressable,
-  FlatList,
-  TouchableOpacity,
 } from "react-native";
-import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
-import mapsData from "../mapsData.json";
-import { icons } from "../constants";
-import CountryFlag from "react-native-country-flag";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import Icon from "react-native-vector-icons/Feather";
 
 export default function MapDisplay() {

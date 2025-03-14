@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchInput } from "../../components";
 import { useEffect, useState } from "react";
@@ -7,7 +6,7 @@ import { useEffect, useState } from "react";
 import { icons } from "../../constants";
 import ItemDisplay from "../../components/ItemDisplay";
 
-import { FlatList, Pressable } from "react-native";
+import { FlatList } from "react-native";
 
 export default function AgentsScreen() {
 	const [search, setSearch] = useState("");

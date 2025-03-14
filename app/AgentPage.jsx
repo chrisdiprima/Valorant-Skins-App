@@ -1,18 +1,16 @@
 import {
   Text,
   View,
-  StyleSheet,
+
   Image,
   ScrollView,
   Pressable,
-  FlatList,
-  TouchableOpacity,
+  
 } from "react-native";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
-import agentData from "../agentsTester.json";
+import { useRouter, useLocalSearchParams } from "expo-router";
 import agentCountries from "../agentCountries.json";
 
 import { icons } from "../constants";

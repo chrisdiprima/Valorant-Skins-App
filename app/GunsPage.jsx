@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import {  View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchInput } from "../components";
 import { useEffect, useState } from "react";
@@ -7,9 +7,8 @@ import { icons } from "../constants";
 import Icon from "react-native-vector-icons/Feather";
 import ItemDisplay from "../components/ItemDisplay";
 
-import weaponData from "../weaponTester.json";
 import { FlatList } from "react-native";
-import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 export default function GunsPage() {
   const params = useLocalSearchParams();

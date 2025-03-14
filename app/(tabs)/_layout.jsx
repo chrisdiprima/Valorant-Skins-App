@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { View, Text, TouchableOpacity, Keyboard } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { TabIcon } from "../../components";
 
 export default function TabLayout() {
