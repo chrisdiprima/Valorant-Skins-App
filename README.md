@@ -1,50 +1,93 @@
-# Welcome to your Expo app 👋
+# Valorant Skins App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a mobile application built with React Native and Expo, designed to provide Valorant players with easy access to information about agents, maps, and weapon skins. The app fetches data from the Valorant API to display details such as agent abilities, map layouts, and skin collections.
 
-## Get started
+## Images
 
-1. Install dependencies
+![App Screenshot 1](screenshots/agentsScreenshot.jpg)
+![App Screenshot 2](screenshots/agentPage1.jpg)
+![App Screenshot 3](screenshots/weaponPage.jpg)
+![App Screenshot 4](screenshots/maps.jpg)
+![App Screenshot 5](screenshots/IndividualMap.jpg)
 
-   ```bash
-   npm install
-   ```
+*Add your app screenshots here!*
 
-2. Start the app
+## Description
 
-   ```bash
+The Valorant Skins App aims to be a helpful resource for Valorant enthusiasts. With a clean and intuitive interface, users can quickly search and browse through agents, maps, and weapon skins. The app provides detailed information, including agent abilities, map layouts, and skin variations, making it a valuable tool for both casual and competitive players.
+
+Key features include:
+
+-   **Agent Information:** Detailed profiles of all playable agents, including their abilities and lore.
+-   **Map Details:** Comprehensive layouts and information about each map in Valorant.
+-   **Weapon Skins:** A complete catalog of weapon skins, including variations and collections.
+-   **Search Functionality:** Easily find agents, maps, or skins with the integrated search feature.
+-   **Responsive UI:** A user-friendly interface optimized for mobile devices.
+
+## Technologies Used
+
+-   **React Native:** For building cross-platform mobile applications.
+-   **Expo:** For streamlined development, testing, and deployment.
+-   **Valorant API:** To fetch real-time data about agents, maps, and skins.
+-   **React Navigation (Expo Router):** For navigation between screens.
+-   **NativeWind:** For styling using Tailwind CSS syntax.
+-   **Expo Video:** For displaying weapon skin videos.
+-   **React Native Reanimated Carousel:** For image carousels.
+-   **React Native Country Flag:** For displaying agent origin flags.
+-   **Google Fonts (Poppins, Zen Dots):** For custom typography.
+-   **Feather Icons:** For icons.
+
+## Setup
+
+Follow these steps to set up the Valorant Skins App on your local machine:
+
+1.  **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/chrisdiprima/Valorant-Skins-App.git
+    cd Valorant-Skins-App
+    ```
+
+2.  **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Install Expo CLI Globally (if not already installed):**
+
+    ```bash
+    npm install -g expo-cli
+    ```
+
+4.  **Start the Development Server:**
+
+    ```bash
     npx expo start
-   ```
+    ```
 
-In the output, you'll find options to open the app in a
+5.  **Run the App:**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    -   Scan the QR code with the Expo Go app on your iOS or Android device.
+    -   Or, run the app in an emulator:
+        -   For iOS: Press `i` in the terminal.
+        -   For Android: Press `a` in the terminal.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+6.  **Environment Setup**
+    -   Ensure you have Node.js and npm (or Yarn) installed.
+    -   Install Expo Go on your mobile device for testing.
+    -   Android Studio or Xcode are needed for running emulators.
 
-## Get a fresh project
+7.  **Customization**
+    -   You can customize the app's appearance by modifying the `tailwind.config.js` and `global.css` files.
+    -   Add or modify constants in the `constants` folder.
+    -   Replace placeholder images in the `assets` folder.
+    -   Update the agentCountries.json file with any changes to agent origins.
 
-When you're ready, run:
+## Contributing
 
-```bash
-npm run reset-project
-```
+Contributions are welcome! If you find a bug or have an idea for a new feature, please open an issue or submit a pull request.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## License
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License.
