@@ -86,7 +86,3 @@ Follow these steps to set up the Valorant Skins App on your local machine:
 ## Contributing 🤝
 
 Contributions are welcome! If you find a bug or have an idea for a new feature, please open an issue or submit a pull request.
-
-## License 📄
-
-This project is licensed under the MIT License.
